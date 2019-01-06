@@ -6,7 +6,7 @@
 name: Xin Ge
 
 # Short bio or description (displayed in the header)
-description:blockchain developer
+description: blockchain developer
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 #avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
@@ -19,7 +19,7 @@ avatar: https://github.com/gexin1023/gexin1023.github.io/blob/master/images/hdIm
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email:gexin1023@gmail.com
+  email: gexin1023@gmail.com
   facebook:
   flickr:
   github: github.com/gexin1023
