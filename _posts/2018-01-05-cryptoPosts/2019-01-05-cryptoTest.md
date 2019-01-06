@@ -5,7 +5,7 @@ title: crypto Test
 
 ## test1
 
-![](./pic/a.jpg)
+![]({{ site.baseurl }}/images/404.jpg)
 
 ## testw
 
