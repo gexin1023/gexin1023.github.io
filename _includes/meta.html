@@ -10,9 +10,23 @@
     <meta name="description" content="{{ site.description }}">
     <meta property="og:description" content="{{ site.description }}" />
     {% endif %}
-    <meta name="author" content="{{ site.name }}" />
-
+    
     {% if page.title %}
     <meta property="og:title" content="{{ page.title }}" />
     <meta property="twitter:title" content="{{ page.title }}" />
+    {% endif %}
+
+    {% if page.subtitle %}
+    <meta property="og:subtitle" content="{{ page.subtitle }}" />
+    <meta property="twitter:subtitle" content="{{ page.subtitle }}" />
+    {% endif %}
+
+    {% if page.rating %}
+    <meta property="og:rating" content="{{ page.rating }}" />
+    <meta property="twitter:rating" content="{{ page.rating }}" />
+    {% endif %}
+
+    {% if page.author %}
+    <meta property="og:author" content="{{ page.author }}"/>
+    <meta property="twitter:author" content="{{ page.author }}" />
     {% endif %}

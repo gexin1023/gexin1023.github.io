@@ -7,7 +7,10 @@
 
 @import "reset";
 @import "variables";
-// Syntax highlighting @import is at the bottom of this file
+@import "highlights";
+@import "svg-icons";
+
+
 
 /**************/
 /* BASE RULES */
@@ -18,22 +21,25 @@ html {
 }
 
 body {
-	background: $white;
+  background: $white;
   font: 18px/1.4 $helvetica;
-  color: $darkGray;
+  color: $darkerGray;
 }
 
-.container {
-  margin: 0 auto;
-  max-width: 740px;
-  padding: 0 10px;
-  width: 100%;
+my {
+  font: 16px/1.4 $helvetica;
+  font-style: italic;
+}
+
+u {
+  text-decoration: underline;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
-  color: $darkerGray;
+  color: $darkGray;
   font-weight: bold;
+  text-decoration: underline;
 
   line-height: 1.7;
   margin: 1em 0 15px;
@@ -46,9 +52,6 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 30px;
-  a {
-    color: inherit;
-  }
 }
 
 h2 {
@@ -61,8 +64,12 @@ h3 {
 
 h4 {
   font-size: 18px;
-  color: $gray;
 }
+
+h5 {
+  font-size: 16px;
+}
+
 
 p {
   margin: 15px 0;
@@ -74,6 +81,17 @@ a {
 	cursor: pointer;
   &:hover, &:active {
     color: $blue;
+    text-decoration: underline;
+  }
+}
+
+a1 {
+  color: $gray;
+  text-decoration: none;
+	cursor: pointer;
+  &:hover, &:active {
+    color: $gray;
+    text-decoration: underline;
   }
 }
 
@@ -108,6 +126,41 @@ strong, b {
 
 img {
   max-width: 100%;
+}
+
+// My utilities
+
+
+aside {
+  float:none;
+  font: 14px/1.4 $helvetica;
+  background: $lightblue;
+  outline: 2px solid $lightGray;
+}
+
+.center-image {
+    margin: 0 auto;
+    display: block;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 740px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+// a side-margin note
+side {
+  float:none;
+  position: absolute;
+  right: 0;
+  width: 200px;
+  margin: 0;
+  margin-right: 50px;
+  font: 14px/1.4 $helvetica;
+  font-style: italic;
+  color: $gray;
 }
 
 // Fixes images in popup boxes from Google Translate
@@ -257,7 +310,7 @@ nav {
     border-left: 2px solid $gray;
     padding: 0.1em 1em;
     color: $gray;
-    font-size: 22px;
+    font-size: 18px;
     font-style: italic;
   }
 
@@ -283,7 +336,24 @@ footer {
   text-align: center;
 }
 
-// Settled on moving the import of syntax highlighting to the bottom of the CSS
-// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
-@import "highlights";
-@import "svg-icons";
+// Mouse hover image popup
+
+#mouseOver {
+    display: inline;
+    position: relative;
+}
+
+#mouseOver img {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 1em;
+    opacity: 0;
+    pointer-events: none;
+    transition-duration: 800ms;
+}
+
+#mouseOver:hover img {
+    opacity: 0.5;
+    transition-duration: 400ms;
+}
