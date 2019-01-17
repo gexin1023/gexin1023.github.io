@@ -1,5 +1,5 @@
 name: Xin Ge
-description: A deveoper on blockchain
+description: Blogs about Golang, Blockchian and Distributed systems
 avatar: https://github.com/gexin1023.png?size=140
 
 
@@ -49,7 +49,9 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
   syntax_highlighter_opts:
-    css_class: 'highlight'
+  css_class: 'highlight'
+  parse_block_html: true
+
 
 # Set the Sass partials directory, as we're using @imports
 sass:
