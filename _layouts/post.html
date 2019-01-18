@@ -33,10 +33,9 @@ layout: page
     {% endif %}
   </div>
   <!-- Disqus comments view -->
-  {% if page.comments != false and site.disqus_id %}
-  <div class="post-disqus">
-    <section id="disqus_thread"></section>
+  <!-- {% if page.comments != false and site.disqus_id %} -->
+
     {% include disqus.html %}
-  </div>
+
   {% endif %}
 </article>
