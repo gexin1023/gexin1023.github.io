@@ -53,4 +53,11 @@ function h1() public returns(address){
 }
 ```
 
+`h()`函数为直接调用0x1地址，参数为(hash,v,s,r)拼接的字节序列。结果如下：
+
+![](pic/Ecrecover_call_0x1.png)
+
+`h1()`函数为使用ecrecover关键字，结果如下：
+
+![](pic/Ecrecover.png)
 
