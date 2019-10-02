@@ -2,6 +2,7 @@
 layout: post
 title: HotStuff 学习笔记
 toc: true
+tag: [consensus, libra, hotstuff]
 ---
 
 * 
@@ -39,7 +40,7 @@ Basic hotStuff基础版本的共识协议，一个区块的确认需要三阶段
 
 系统输入为tx，网络节点负责将这些tx，打包成一个block，每个block都包含其父block的哈希索引。
 
-![](./pic/node-tree.png)
+![]({{ site.baseurl }}/pic/node-tree.png)
 
 #### 2.1.3. 网络假设
 
@@ -51,11 +52,11 @@ Basic hotStuff基础版本的共识协议，一个区块的确认需要三阶段
 * 异步（asynchrony）：正常节点发出消息，在一个时间间隔内可以送达目标节点，但是该时间间隔未知，即最大消息延迟未知。
 * 部分同步（partially synchrony）: 系统存在一个不确定的GST（global stable time）和一个$\Delta$，使得在GST结束后的$\Delta$时间内，系统处于一个同步状态。
 
-![](./pic/partially-sync.png)
+![]({{ site.baseurl }}/pic/partially-sync.png)
 
 ### 2.2. basic HotStuff 三阶段流程
 
-![](./pic/hotStuff_flow.png)
+![]({{ site.baseurl }}/pic/hotStuff_flow.png)
 
 #### 2.2.1. Prepare阶段
 
@@ -67,11 +68,11 @@ Leader从收到的NewView消息中，选取高度最高的*preparedQC*作为*hig
 
 下图是Leader节点本地的区块树， **\#71**是Leader节点收到的*highQC*, 那么阴影所表示的分支就是一个安全分支，基于该分支创建新的区块不会产生冲突。
 
-![](pic/safe_branch.png)
+![]({{ site.baseurl }}/pic/safe_branch.png)
 
 Leader节点会在highQC所在的安全分支来创建一个新的区块，并广播proposal，proposal中包含了新的区块和*highQC*，其中*highQC*作为proposal的安全性验证。
 
-![](pic/create_leaf.png)
+![]({{ site.baseurl }}/pic/create_leaf.png)
 
 其他节点（replica）一旦收到当前View对应Leader的Proposal消息，Replica会根据会safeNode-predicate规则检查Proposal是否合法。如果Proposal合法，Replica会向Leader发送一个Prepare-vote（根据自己私钥份额对Proposal的签名）。
 
@@ -79,9 +80,9 @@ Replica对于Proposal的验证遵循如下的规则:
 1).  Proposal消息中的区块是从本机lockQC的区块扩展产生（即m.block是lockQC.block的子孙区块）
 2).  为了保证liveness, 除了上一条之外，当Proposal.highQC高于本地lockQC中的view_number时也会接收该proposal。
 
-![](pic/safety_rule_1.png)
+![]({{ site.baseurl }}/pic/safety_rule_1.png)
 
-![](pic/safety_rule_2.png)
+![]({{ site.baseurl }}/pic/safety_rule_2.png)
 
 safety判断规则对比的是lockQC，而不是第一轮投票的结果，所以即使在上一轮针对A投了prepare票，假如A没有commit，那么下一轮依然可以对A'投票，所以说第一轮投票可以反悔。
 
@@ -178,7 +179,7 @@ Replica收到DECIDE消息中的commitQC后，认为当前proposal是一个确定
 
 在Prepare阶段的投票由当前view对应的leader1收集，集齐后生成prepareQC。然后将prepareQC发送到下一个view的leader2那里，leader2基于prepareQC开始新的prepare阶段，这是leader2的prepare阶段，同时也是leader1的precommit阶段。以此类推，leader2产生新的prepareQC,然后发送给下一个view的leader3，leader3开始自己的prepare阶段，同时也是leader1的commit阶段、leader2的precommit阶段。
 
-![](pic/chained_hotstuff.png)
+![]({{ site.baseurl }}/pic/chained_hotstuff.png)
 
 协议简化为如下过程：
 
@@ -195,7 +196,7 @@ Replica收到DECIDE消息中的commitQC后，认为当前proposal是一个确定
 
 正常情况下，每个View中都有一个区块产生并集齐签名，但是情况不会总是这么完美，有时不会有新的区块产生。为了保持区块高度与viewNumber的一致，hotStuff中引入了*Dummy block*的概念。假如在一个View中，不能达成共识，那么就在为该View添加一个*Dummy block*。
 
-![](./pic/dummy_block.png)
+![]({{ site.baseurl }}/pic/dummy_block.png)
 
 #### 2.4.2. k-chain
 
@@ -213,9 +214,9 @@ Replica收到DECIDE消息中的commitQC后，认为当前proposal是一个确定
 
 把hotstuff抽象成一个事件驱动的协议，可以将liveness相关的功能抽离出来，成为单独的pacemaker模块。safety与liveness在实现上解耦，safety是协议的核心保证安全性，liveness由pacemaker保证。
 
-![](./pic/chained_hotstuff_spec.png)
+![]({{ site.baseurl }}/pic/chained_hotstuff_spec.png)
 
-![](./pic/chained_hotstuff_spec1.png)
+![]({{ site.baseurl }}/pic/chained_hotstuff_spec1.png)
 
 * Pacemaker实现如下几部分功能
     + Leader检查

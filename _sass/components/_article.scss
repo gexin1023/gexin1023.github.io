@@ -8,6 +8,9 @@
 
 .c-article__header {
     margin-bottom: 2rem; // 50px
+    h1 {
+        @include fs--heading-1;
+    }
     @media screen and (min-width: $bp__sm) {
         display: -webkit-box;
         display: -webkit-flex;
@@ -29,7 +32,7 @@
 
 .c-article__title {
     @include fs--heading-1;
-    color: $c-base__02;
+    color: $c-base__01;
 }
 
 .c-article__time {
@@ -44,6 +47,9 @@
 
     > * {
         margin-bottom: 1.8rem; // 18px
+    }
+    h1 {
+        @include fs--heading-1;
     }
 
     h2 {

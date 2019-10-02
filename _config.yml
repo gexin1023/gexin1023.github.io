@@ -1,6 +1,6 @@
 author: Xin Ge
 title: Xin Ge's Blog
-description: To record technical notes and personal thoughts
+description: To record technical notes 
 avatar: https://github.com/gexin1023.png?size=140
 
 
@@ -24,7 +24,7 @@ googleplus: # anything in your profile username that comes after plus.google.com
 disqus_id: gexin1023
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-google_analytics:
+#google_analytics:
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
@@ -43,7 +43,7 @@ baseurl:
 permalink: /:year/:month/:title.html
 
 # The release of Jekyll Now that you're using
-version: v1.2.0
+version: v3.1.6
 
 include: [_pages]
 
@@ -63,11 +63,11 @@ sass:
   style: :expanded # You might prefer to minify using :compressed
 
 # Use the following plug-ins
-plugins:
+plugins-dir:
  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
  - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
  # - jekyll-gist
- # - jekyll-toc
+ - jekyll-toc
 
 # Exclude these files from your production _site
 exclude:
