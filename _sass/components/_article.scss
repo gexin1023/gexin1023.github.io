@@ -4,10 +4,14 @@
 
 .c-article {
     margin-bottom: 10rem; // 100px
+    h1 {
+        @include fs--heading-1;
+    }
 }
 
 .c-article__header {
     margin-bottom: 2rem; // 50px
+    @include fs--heading-3;
     h1 {
         @include fs--heading-1;
     }
@@ -49,19 +53,19 @@
         margin-bottom: 1.8rem; // 18px
     }
     h1 {
-        @include fs--heading-1;
-    }
-
-    h2 {
         @include fs--heading-2;
     }
 
-    h3 {
+    h2 {
         @include fs--heading-3;
     }
 
-    h4 {
+    h3 {
         @include fs--heading-4;
+    }
+
+    h4 {
+        @include fs--heading-5;
     }
 
     h5 {
