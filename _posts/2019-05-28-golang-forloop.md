@@ -107,11 +107,41 @@ func main() {
 4
 ```
 
-可以将print方法的接受者改为实体类型，而非引用。这样每次Goroutine都是以值复制的形式传入，实现迭代。
+如果非要使用这种方式在迭代中使用goroutine，可以采用如下三种方式修改
+
+1. 可以将print方法的接受者改为实体类型，而非引用。这样每次Goroutine都是以值复制的形式传入，实现迭代。
 
 ```golang
 func (v Value)print(){
 	time.Sleep(time.Second)
 	fmt.Println(v.val)
+}
+```
+
+2. 也可以声明一个临时变量，用于保存v值
+
+```golang
+for _,v := range vals{
+	tmp := v
+	go tmp.print()
+}
+```
+
+3. 也可以将v的类型改为引用类型
+
+```
+func main() {
+
+	vals := make([]*Value,0)
+
+	for  i := 0; i <5;i++ {
+		vals = append(vals, &Value{val:i,})
+	}
+
+	for _,v := range vals{
+		go v.print()
+	}
+
+	time.Sleep(time.Second*3)
 }
 ```
