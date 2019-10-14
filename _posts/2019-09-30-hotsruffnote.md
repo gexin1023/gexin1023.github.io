@@ -1,6 +1,6 @@
 ---
 layout: post
-title: HotStuff 学习笔记
+title: HotStuff共识协议详解
 toc: true
 tag: [consensus, libra, hotstuff]
 ---
